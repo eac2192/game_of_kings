@@ -21,22 +21,22 @@ class @Pawn extends Piece
     positions.push([@x, @y + 2]) if double_move
     positions
 
-  to_s: -> "P"
+  to_s: -> "♟"
 
 class @Bishop extends Piece
-  to_s: -> "B"
+  to_s: -> "♝"
 
 class @Rook extends Piece
-  to_s: -> "R"
+  to_s: -> "♜"
 
 class @Knight extends Piece
-  to_s: -> "H"
+  to_s: -> "♞"
 
 class @Queen extends Piece
-  to_s: -> "Q"
+  to_s: -> "♛"
 
 class @King extends Piece
-  to_s: -> "K"
+  to_s: -> "♚"
 
 [@Pawn, @Bishop, @Rook, @Queen, @Knight, @King].map (klass) ->
   include klass,

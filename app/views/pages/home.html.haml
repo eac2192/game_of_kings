@@ -1,1 +1,147 @@
 %h1 Hello World
+
+#chess2DBox{:style => "width: 512px; height: 512px; "}
+  %table#flatChessboard{:style => "width: 500px; height: 500px; margin-bottom: 6px; margin-top: 6px; "}
+    %tbody
+      %tr
+        %td.boardAngle
+        %th.horizCoords a
+        %th.horizCoords b
+        %th.horizCoords c
+        %th.horizCoords d
+        %th.horizCoords e
+        %th.horizCoords f
+        %th.horizCoords g
+        %th.horizCoords h
+        %td.boardAngle
+      %tr
+        %th.vertCoords 8
+        %td#flatSq91.whiteSquares{:style => ""}
+          %span ♜
+        %td#flatSq92.blackSquares{:style => ""}
+          %span ♞
+        %td#flatSq93.whiteSquares{:style => ""}
+          %span ♝
+        %td#flatSq94.blackSquares{:style => ""}
+          %span ♛
+        %td#flatSq95.whiteSquares{:style => ""}
+          %span ♚
+        %td#flatSq96.blackSquares{:style => ""}
+          %span ♝
+        %td#flatSq97.whiteSquares{:style => ""}
+          %span ♞
+        %td#flatSq98.blackSquares{:style => ""}
+          %span ♜
+        %th.vertCoords 8
+      %tr
+        %th.vertCoords 7
+        %td#flatSq81.blackSquares{:style => ""}
+          %span ♟
+        %td#flatSq82.whiteSquares{:style => ""}
+          %span ♟
+        %td#flatSq83.blackSquares{:style => ""}
+          %span ♟
+        %td#flatSq84.whiteSquares{:style => ""}
+          %span ♟
+        %td#flatSq85.blackSquares{:style => ""}
+          %span ♟
+        %td#flatSq86.whiteSquares{:style => ""}
+          %span ♟
+        %td#flatSq87.blackSquares{:style => ""}
+          %span ♟
+        %td#flatSq88.whiteSquares{:style => ""}
+          %span ♟
+        %th.vertCoords 7
+      %tr
+        %th.vertCoords 6
+        %td#flatSq71.whiteSquares{:style => ""}
+        %td#flatSq72.blackSquares{:style => ""}
+        %td#flatSq73.whiteSquares{:style => ""}
+        %td#flatSq74.blackSquares{:style => ""}
+        %td#flatSq75.whiteSquares{:style => ""}
+        %td#flatSq76.blackSquares{:style => ""}
+        %td#flatSq77.whiteSquares{:style => ""}
+        %td#flatSq78.blackSquares{:style => ""}
+        %th.vertCoords 6
+      %tr
+        %th.vertCoords 5
+        %td#flatSq61.blackSquares{:style => ""}
+        %td#flatSq62.whiteSquares{:style => ""}
+        %td#flatSq63.blackSquares{:style => ""}
+        %td#flatSq64.whiteSquares{:style => ""}
+        %td#flatSq65.blackSquares{:style => ""}
+        %td#flatSq66.whiteSquares{:style => ""}
+        %td#flatSq67.blackSquares{:style => ""}
+        %td#flatSq68.whiteSquares{:style => ""}
+        %th.vertCoords 5
+      %tr
+        %th.vertCoords 4
+        %td#flatSq51.whiteSquares{:style => ""}
+        %td#flatSq52.blackSquares{:style => ""}
+        %td#flatSq53.whiteSquares{:style => ""}
+        %td#flatSq54.blackSquares{:style => ""}
+        %td#flatSq55.whiteSquares{:style => ""}
+        %td#flatSq56.blackSquares{:style => ""}
+        %td#flatSq57.whiteSquares{:style => ""}
+        %td#flatSq58.blackSquares{:style => ""}
+        %th.vertCoords 4
+      %tr
+        %th.vertCoords 3
+        %td#flatSq41.blackSquares{:style => ""}
+        %td#flatSq42.whiteSquares{:style => ""}
+        %td#flatSq43.blackSquares{:style => ""}
+        %td#flatSq44.whiteSquares{:style => ""}
+        %td#flatSq45.blackSquares{:style => ""}
+        %td#flatSq46.whiteSquares{:style => ""}
+        %td#flatSq47.blackSquares{:style => ""}
+        %td#flatSq48.whiteSquares{:style => ""}
+        %th.vertCoords 3
+      %tr
+        %th.vertCoords 2
+        %td#flatSq31.whiteSquares{:style => ""}
+          %span ♙
+        %td#flatSq32.blackSquares{:style => ""}
+          %span ♙
+        %td#flatSq33.whiteSquares{:style => ""}
+          %span ♙
+        %td#flatSq34.blackSquares{:style => ""}
+          %span ♙
+        %td#flatSq35.whiteSquares{:style => ""}
+          %span ♙
+        %td#flatSq36.blackSquares{:style => ""}
+          %span ♙
+        %td#flatSq37.whiteSquares{:style => ""}
+          %span ♙
+        %td#flatSq38.blackSquares{:style => ""}
+          %span ♙
+        %th.vertCoords 2
+      %tr
+        %th.vertCoords 1
+        %td#flatSq21.blackSquares{:style => ""}
+          %span ♖
+        %td#flatSq22.whiteSquares{:style => ""}
+          %span ♘
+        %td#flatSq23.blackSquares{:style => ""}
+          %span ♗
+        %td#flatSq24.whiteSquares{:style => ""}
+          %span ♕
+        %td#flatSq25.blackSquares{:style => ""}
+          %span ♔
+        %td#flatSq26.whiteSquares{:style => ""}
+          %span ♗
+        %td#flatSq27.blackSquares{:style => ""}
+          %span ♘
+        %td#flatSq28.whiteSquares{:style => ""}
+          %span ♖
+        %th.vertCoords 1
+      %tr
+        %td.boardAngle
+        %th.horizCoords a
+        %th.horizCoords b
+        %th.horizCoords c
+        %th.horizCoords d
+        %th.horizCoords e
+        %th.horizCoords f
+        %th.horizCoords g
+        %th.horizCoords h
+        %td.boardAngle
