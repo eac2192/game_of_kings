@@ -14,7 +14,7 @@ include = (klass, mixin) ->
 
 class @Pawn extends Piece
   to_s: -> 
-    if @is_white
+    if @is_white()
         "♟"
     else
         "♙"
@@ -28,14 +28,14 @@ class @Pawn extends Piece
 
 class @Bishop extends Piece
   to_s: -> 
-    if @is_white
+    if @is_white()
         "♝"
     else
         "♗"
 
 class @Rook extends Piece
   to_s: -> 
-    if @is_white
+    if @is_white()
         "♜"
     else
         "♖"
@@ -47,21 +47,21 @@ class @Rook extends Piece
 
 class @Knight extends Piece
   to_s: -> 
-    if @is_white
+    if @is_white()
         "♞"
     else
         "♘"
 
 class @Queen extends Piece
   to_s: -> 
-    if @is_white
+    if @is_white()
         "♛"
     else
         "♕"
 
 class @King extends Piece
   to_s: -> 
-    if @is_white
+    if @is_white()
         "♚"
     else
         "♔"
@@ -69,4 +69,4 @@ class @King extends Piece
 [@Pawn, @Bishop, @Rook, @Queen, @Knight, @King].map (klass) ->
   include klass,
     is_black: -> @color == 1
-    is_white: -> !@is_black
+    is_white: -> !@is_black()
