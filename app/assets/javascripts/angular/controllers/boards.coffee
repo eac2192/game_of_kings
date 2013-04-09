@@ -21,4 +21,10 @@
     p = @chess.get(x+y)
     if p then $scope._mapping[p.color][p.type] else ' '
   $scope.colorClass = (i, j) -> if (i + j) % 2 == 0 then 'whiteSquares' else 'blackSquares'
-
+  $scope.play = ->
+    unless @chess.game_over()
+      console.log "position: " + @chess.fen()
+      moves = @chess.moves()
+      move = moves[Math.floor(Math.random() * moves.length)]
+      @chess.move move
+      console.log "move: " + move
