@@ -1,13 +1,13 @@
 class @Piece
-	constructor: (@pos) ->
+  constructor: (@pos) ->
 
-	get_pos: () ->
-		@pos
+  get_pos: () ->
+    @pos
 
-	move: () ->
-		5
+  move: () ->
+    5
 
 class @Pawn extends Piece
-	move: () ->
-		@pos = @pos + 1
+  move: () ->
+    @pos = @pos + 1
 
