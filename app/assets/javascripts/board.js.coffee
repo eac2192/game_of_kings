@@ -1,5 +1,13 @@
 class @Board
     constructor: () ->
-        @spaces = [0...8].map (x)->
-            [0...8].map (y) ->
-                new Piece.new()
+        @spaces = [[null, null, null, null, null, null, null, null],
+                   [new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn],
+                   [null, null, null, null, null, null, null, null],
+                   [null, null, null, null, null, null, null, null],
+                   [null, null, null, null, null, null, null, null],
+                   [null, null, null, null, null, null, null, null],
+                   [new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn],
+                   [null, null, null, null, null, null, null, null]]
+
+        piece_at: (row, col) ->
+            @spaces[row][col]
