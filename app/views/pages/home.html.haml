@@ -1,36 +1,46 @@
-#chess2DBox{:style => "width: 512px; height: 512px;", 'ng-controller' => 'BoardsController'}
-  %table#flatChessboard{:style => "width: 500px; height: 500px; margin-bottom: 6px; margin-top: 6px; "}
-    %tbody
-      %tr
-        %td.boardAngle
-        %th.horizCoords a
-        %th.horizCoords b
-        %th.horizCoords c
-        %th.horizCoords d
-        %th.horizCoords e
-        %th.horizCoords f
-        %th.horizCoords g
-        %th.horizCoords h
-        %td.boardAngle
-      %tr{ 'ng-repeat' => 'y in "12345678"'}
-        %th.vertCoords {{$index + 1}}
-        %td{'ng-repeat' => 'x in "abcdefgh"', 'class' => "{{colorClass($index, $parent.$index)}}", 'id' => "flatSq{{9 - $parent.$index}}{{$index + 1}}"}
-          %span {{ getPiece(x, y) }}
-        %th.vertCoords {{$index + 1}}
-      %tr
-        %td.boardAngle
-        %th.horizCoords a
-        %th.horizCoords b
-        %th.horizCoords c
-        %th.horizCoords d
-        %th.horizCoords e
-        %th.horizCoords f
-        %th.horizCoords g
-        %th.horizCoords h
-        %td.boardAngle
-  %button{'ng-click' => 'play()'} Play
+.three.columns
+  34eg
+  rgeh welkrjhwgjkl rehfgjkl ehwerkj ghkjerg kejrg
+.nine.columns
+  #chess2DBox{:style => "width: 512px; height: 512px;", 'ng-controller' => 'BoardsController'}
+    %table#flatChessboard{:style => "width: 500px; height: 500px; margin-bottom: 6px; margin-top: 6px;"}
+      %tbody
+        %tr
+          %td.boardAngle
+          %th.horizCoords a
+          %th.horizCoords b
+          %th.horizCoords c
+          %th.horizCoords d
+          %th.horizCoords e
+          %th.horizCoords f
+          %th.horizCoords g
+          %th.horizCoords h
+          %td.boardAngle
+        %tr{ 'ng-repeat' => 'y in "12345678"'}
+          %th.vertCoords {{$index + 1}}
+          %td{'ng-repeat' => 'x in "abcdefgh"', 'class' => "{{colorClass($index, $parent.$index)}}", 'id' => "flatSq{{9 - $parent.$index}}{{$index + 1}}"}
+            %span {{ getPiece(x, y) }}
+          %th.vertCoords {{$index + 1}}
+        %tr
+          %td.boardAngle
+          %th.horizCoords a
+          %th.horizCoords b
+          %th.horizCoords c
+          %th.horizCoords d
+          %th.horizCoords e
+          %th.horizCoords f
+          %th.horizCoords g
+          %th.horizCoords h
+          %td.boardAngle
+    %ul
+      %li{'ng-repeat' => 'move in moves()'} {{move}}
+    %button{'ng-click' => 'play()'} Play Random Move
+    %form{'ng-submit' => 'move(pos)'}
+      %input{:type => 'text', 'ng-model' => 'pos'}
+      %input{type: 'submit'} Submit
 
-%a{href: 'https://github.com/jhlywa/chess.js'} Chess JS
-%a{href: 'https://github.com/juliangarnier/3D-Hartwig-chess-set'} 3D Chess
 
-%img{src: 'http://www.tshirtroundup.com/wp-content/uploads/2012/06/Chess-of-Thrones.jpg' }
+  %a{href: 'https://github.com/jhlywa/chess.js'} Chess JS
+  %a{href: 'https://github.com/juliangarnier/3D-Hartwig-chess-set'} 3D Chess
+
+  %img{src: 'http://www.tshirtroundup.com/wp-content/uploads/2012/06/Chess-of-Thrones.jpg' }
