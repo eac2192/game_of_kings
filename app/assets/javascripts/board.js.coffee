@@ -1,28 +1,38 @@
 class @Board
-    constructor: () ->
+    constructor: ->
       @spaces = []
       for i in [0..7] by 1
-        for i in [0..7] by 1
+        @spaces[i] = []
+        for j in [0..7] by 1
+          if i == 1 or i == 6
+            @spaces[i][j] = new Pawn(j, i, 1)
+          else
+            @spaces[i][j] = null
 
-        @spaces = [[null, null, null, null, null, null, null, null],
-                   [new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn],
-                   [null, null, null, null, null, null, null, null],
-                   [null, null, null, null, null, null, null, null],
-                   [null, null, null, null, null, null, null, null],
-                   [null, null, null, null, null, null, null, null],
-                   [new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn],
-                   [null, null, null, null, null, null, null, null]]
+    to_s: ->
+      '\n' + @spaces.map( (row) ->
+        row.map( (el) ->
+          if el == null then " " else el.to_s()
+        ).join(' | ')
+      ).join('\n')
 
-    piece_at: (row, col) ->
-        @spaces[row][col]
+    children: ->
+      boards = [ ]
+      for row in @spaces
+        for p in row
+          unless p == null
+            current_mvs = p.moves()
+            for move in current_mvs
+              b = new Board
+              b.move(from: [p.x, p.y], to: move)
+              boards.push b
+      boards
 
-    to_string:  () ->
-        rep = ""
-        for row, row_num in @spaces
-            for element, colum_num in row
-                if element == null
-                    rep += "| X |"
-                else
-                    rep += "| " + element.to_string() + " |"
-            rep += '\n'
-        rep
+    move: (hash) ->
+      from_x = hash['from'][0]
+      from_y = hash['from'][1]
+      to_x   = hash['to'][0]
+      to_y   = hash['to'][1]
+      p = @spaces[from_y][from_x]
+      @spaces[from_y][from_x] = null
+      @spaces[to_y][to_x] = p
