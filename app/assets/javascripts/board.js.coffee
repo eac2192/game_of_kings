@@ -36,15 +36,9 @@ class @Board
                     else
                         rep += "|#X#|"
                 else
-<<<<<<< HEAD
                     if @is_white(row_num, colum_num)
                         rep += "| " + element.to_string() + " |"
                     else
                         rep += "|#" + element.to_string() + "#|"
             rep += '\n---------------------------\n'
         rep
-=======
-                    rep += "| " + element.to_string() + " |"
-            rep += '\n'
-        rep
->>>>>>> 0537719c542d541267e4194d81349c1fdb1a97a9
