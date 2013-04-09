@@ -39,6 +39,11 @@ class @Rook extends Piece
         "♜"
     else
         "♖"
+  moves: ->
+    positions = [ ]
+    for new_coord in [0..7]
+      positions.push [@x, new_coord]
+      positions.push [new_coord, @y]
 
 class @Knight extends Piece
   to_s: -> 
