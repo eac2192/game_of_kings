@@ -1,4 +1,6 @@
-%h1 Hello World
+.board{'ng-controller' => 'BoardsController'}
+  %h1
+    {{ hello_world }}
 
 #chess2DBox{:style => "width: 512px; height: 512px; "}
   %table#flatChessboard{:style => "width: 500px; height: 500px; margin-bottom: 6px; margin-top: 6px; "}
@@ -145,3 +147,4 @@
         %th.horizCoords g
         %th.horizCoords h
         %td.boardAngle
+

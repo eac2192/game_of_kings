@@ -13,15 +13,14 @@ include = (klass, mixin) ->
   extend klass.prototype, mixin
 
 class @Pawn extends Piece
-  moves: () ->
+  to_s: -> "♟"
+
+  moves: ->
     positions = [ ]
     double_move = (@is_black() and @y == 1) || (@is_white() and @y  == 7)
-
-    positions.push([@x, @y + 1])
-    positions.push([@x, @y + 2]) if double_move
+    positions.push([@x, @y + @color*1])
+    positions.push([@x, @y + @color*2]) if double_move
     positions
-
-  to_s: -> "♟"
 
 class @Bishop extends Piece
   to_s: -> "♝"
