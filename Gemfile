@@ -10,6 +10,8 @@ gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5"
 gem "redis-namespace"
 
+gem "angular-rails"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
