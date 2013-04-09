@@ -10,6 +10,9 @@ class @Board
           else
             @spaces[i][j] = null
 
+    piece_at: (row, col) ->
+        @spaces[row][col]
+
     to_s: ->
       '\n' + @spaces.map( (row) ->
         row.map( (el) ->
