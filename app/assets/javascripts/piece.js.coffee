@@ -5,10 +5,6 @@ class @Piece
     @x = x
     @color = color
 
-  # Takes a 2d array and uses the subclasses moves function
-  # to check for validity and return array of Boards
-  moves: (positions) -> positions
-
 extend = (obj, mixin) ->
   obj[name] = method for name, method of mixin
   obj
@@ -17,16 +13,13 @@ include = (klass, mixin) ->
   extend klass.prototype, mixin
 
 class @Pawn extends Piece
-  # Returns [ {x: 4, y: 5}, ...]
   moves: () ->
     positions = [ ]
     double_move = (@is_black() and @y == 1) || (@is_white() and @y  == 7)
 
     positions.push([@x, @y + 1])
     positions.push([@x, @y + 2]) if double_move
-    super positions
-
-
+    positions
 
 include @Pawn,
   is_black: -> @color == 1
