@@ -6,6 +6,10 @@ gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_fi
 
 gem 'sqlite3'
 
+gem "redis", "~> 3.0.1"
+gem "hiredis", "~> 0.4.5"
+gem "redis-namespace"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
