@@ -14,7 +14,7 @@
         %td.boardAngle
       %tr{ 'ng-repeat' => 'row in squares'}
         %th.vertCoords {{$index + 1}}
-        %td{'ng-repeat' => 'p in row', 'class' => "{{classFor($index, $parent.$index)}}", 'id' => "flatSq{{9 - $parent.$index}}{{$index + 1}}"}
+        %td{'ng-repeat' => 'p in row', 'class' => "{{colorClass($index, $parent.$index)}}", 'id' => "flatSq{{9 - $parent.$index}}{{$index + 1}}"}
           %span {{ p.to_s() }}
         %th.vertCoords {{$index + 1}}
       %tr
@@ -28,3 +28,8 @@
         %th.horizCoords g
         %th.horizCoords h
         %td.boardAngle
+
+%a{href: 'https://github.com/jhlywa/chess.js'} Chess JS
+%a{href: 'https://github.com/juliangarnier/3D-Hartwig-chess-set'} 3D Chess
+
+%img{src: 'http://www.tshirtroundup.com/wp-content/uploads/2012/06/Chess-of-Thrones.jpg' }
