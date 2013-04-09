@@ -1,5 +1,9 @@
 class @Board
     constructor: () ->
+      @spaces = []
+      for i in [0..7] by 1
+        for i in [0..7] by 1
+
         @spaces = [[null, null, null, null, null, null, null, null],
                    [new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn, new Pawn],
                    [null, null, null, null, null, null, null, null],
