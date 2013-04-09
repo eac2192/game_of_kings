@@ -1,5 +1,5 @@
 class @Board
   constructor: () ->
-    @spaces = [0...20].map (x)->
-      [0...20].map (y) ->
-        new Piece.new()
+    @spaces = [0...8].map (x)->
+      [0...8].map (y) ->
+        new Piece x, y

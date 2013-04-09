@@ -1,8 +1,6 @@
 class @Piece
-  constructor: (@pos) ->
-
-  get_pos: () ->
-    @pos
+  constructor: (x, y) ->
+    @x, @y = x, y
 
   move: () ->
     5
@@ -10,4 +8,3 @@ class @Piece
 class @Pawn extends Piece
   move: () ->
     @pos = @pos + 1
-
