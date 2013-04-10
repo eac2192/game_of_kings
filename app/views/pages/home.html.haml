@@ -11,7 +11,7 @@
             %tr{ 'ng-repeat' => 'y in "12345678"'}
               %th.vertCoords {{$index + 1}}
               %td{'ng-repeat' => 'x in "abcdefgh"', 'class' => "{{colorClass($index, $parent.$index)}}", 'id' => "flatSq{{9 - $parent.$index}}{{$index + 1}}"}
-                %span {{ getPiece(x, y) }}
+                %div {{ getPiece(x, y) }}
               %th.vertCoords {{$index + 1}}
             %tr
               %td.boardAngle

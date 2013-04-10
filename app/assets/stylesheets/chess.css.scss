@@ -37,7 +37,8 @@
   font-family: Times New Roman;
 }
 
-#flatChessboard tr td.blackSquares span, #flatChessboard tr td.whiteSquares span { 
+#flatChessboard tr td.blackSquares div, #flatChessboard tr td.whiteSquares div { 
+  width: 25px;
   margin: 0px;
   font-size: 150%;
   cursor: pointer; 
