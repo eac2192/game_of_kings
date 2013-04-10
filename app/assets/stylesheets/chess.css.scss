@@ -1,0 +1,78 @@
+#flatChessboard { /* Table element */
+  /**
+  * margin-top: [DYNAMIC VALUE];
+  * margin-bottom: [DYNAMIC VALUE];
+  */
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border: 0;
+  tbody {
+    border: solid;
+  }
+}
+
+#flatSq91, #flatSq92, #flatSq93, #flatSq94, #flatSq95, #flatSq96, #flatSq97, #flatSq98 {
+  border-top: solid
+}
+
+#flatSq91, #flatSq81, #flatSq71, #flatSq61, #flatSq51, #flatSq41, #flatSq31, #flatSq21 {
+  border-left: solid
+}
+
+#flatSq21, #flatSq22, #flatSq23, #flatSq24, #flatSq25, #flatSq26, #flatSq27, #flatSq28 {
+  border-bottom: solid
+}
+
+#flatSq98, #flatSq88, #flatSq78, #flatSq68, #flatSq58, #flatSq48, #flatSq38, #flatSq28 {
+  border-right: solid
+}
+
+#flatChessboard tr td.blackSquares, #flatChessboard tr td.whiteSquares {
+  width: 50px;
+  height: 50px;
+  font-size: 22px;
+  line-height: 0px;
+  text-align: center;
+  font-family: Times New Roman;
+}
+
+#flatChessboard tr td.blackSquares span, #flatChessboard tr td.whiteSquares span { 
+  margin: 0px;
+  font-size: 150%;
+  cursor: pointer; 
+}
+
+#flatChessboard tr th.horizCoords {
+  width: 50px;
+  height: 50px;
+}
+
+#flatChessboard tr th.vertCoords {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+#flatChessboard tr td.blackSquares { background-color: #534E49; }
+
+/* #flatChessboard tr td.blackSquares:hover { background-color: #ccccaa; } */
+
+#flatChessboard tr td.whiteSquares { background-color: #ffffff; }
+
+/* #flatChessboard tr td.whiteSquares:hover { background-color: #ddddaa; } */
+
+#flatChessboard tr td.boardAngle /*, #bottomBorder */ { height: 6%; }
+
+#flatChessboard tr td.boardAngle { background-color: #ffffff;}
+
+#flatChessboard tr td.boardAngle /*, #rightBorder */ {
+  width: 6%;
+}
+#flatChessboard tr th, #flatChessboard tr td.boardAngle /*, #rightBorder, #bottomBorder */ {
+  overflow: visible;
+  background-color: #704316;
+  color: #f9ac6d;
+  font-family: Arial;
+  font-size: 100%;
+}
