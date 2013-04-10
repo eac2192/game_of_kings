@@ -30,3 +30,17 @@
       move = moves[Math.floor(Math.random() * moves.length)]
       @chess.move move
       console.log "move: " + move
+  $scope._num_pieces = (piece) ->
+    @chess.fen().split(' ')[0].split(piece).length - 1
+  $scope._piece_heurstic = (piece, weight) ->
+    num_black = @_num_pieces(piece)
+    num_white = @_num_pieces(piece.toUpperCase())
+    (num_black - num_white) * weight
+
+  $scope.heuristic = ->
+    pieces = { p: 1, r: 5, n: 3, q: 9, b: 3, k: 99999 }
+    sum = 0
+    for p, weight of pieces
+      sum += @_piece_heurstic(p, weight)
+    sum
+
