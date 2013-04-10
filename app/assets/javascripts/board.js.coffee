@@ -5,8 +5,14 @@ class @Board
         @spaces[i] = []
         color = if i < 2 then 1 else -1
         for j in [0..7] by 1
+
           if i == 1 or i == 6
             @spaces[i][j] = new Pawn(j, i, color)
+          else if i == 0
+            @spaces[i][j] = switch
+              when 0 then new Rook(j, i, color)
+              when 1 then new Knight(j, i, color)
+              when 2 then new Bishop(j, i, color) 
           else
             @spaces[i][j] = null
 
