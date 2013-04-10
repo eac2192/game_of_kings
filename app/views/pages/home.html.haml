@@ -1,5 +1,4 @@
 .row#boardController{'ng-controller' => 'BoardsController'}
-  {{ heuristic() }}
   .small-8.columns
     .row
       #chess2DBox{:style => "width: 512px; height: 512px;"}
@@ -25,6 +24,7 @@
 
   .small-4.columns
     .row
+      %h3 Heuristic: {{ heuristic() }}
       %ul
         %li{'ng-repeat' => 'move in moves()'} {{move}}
 
