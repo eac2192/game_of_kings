@@ -13,7 +13,7 @@ include = (klass, mixin) ->
   extend klass.prototype, mixin
 
 class @Pawn extends Piece
-  to_s: -> 
+  to_s: ->
     if @is_white()
         "♟"
     else
@@ -27,14 +27,14 @@ class @Pawn extends Piece
     positions
 
 class @Bishop extends Piece
-  to_s: -> 
+  to_s: ->
     if @is_white()
         "♝"
     else
         "♗"
 
 class @Rook extends Piece
-  to_s: -> 
+  to_s: ->
     if @is_white()
         "♜"
     else
@@ -46,21 +46,21 @@ class @Rook extends Piece
       positions.push [new_coord, @y]
 
 class @Knight extends Piece
-  to_s: -> 
+  to_s: ->
     if @is_white()
         "♞"
     else
         "♘"
 
 class @Queen extends Piece
-  to_s: -> 
+  to_s: ->
     if @is_white()
         "♛"
     else
         "♕"
 
 class @King extends Piece
-  to_s: -> 
+  to_s: ->
     if @is_white()
         "♚"
     else
