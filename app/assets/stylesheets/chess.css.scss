@@ -37,28 +37,38 @@
   font-family: Times New Roman;
 }
 
-#flatChessboard tr td.blackSquares span, #flatChessboard tr td.whiteSquares span { 
+#flatChessboard tr td.blackSquares div, #flatChessboard tr td.whiteSquares div { 
+  width: 25px;
   margin: 0px;
-  font-size: 150%;
-  cursor: pointer; 
+  font-size: 230%;
+  cursor: pointer;
 }
 
 #flatChessboard tr th.horizCoords {
   width: 50px;
   height: 50px;
+  font-size: 150%
 }
 
 #flatChessboard tr th.vertCoords {
   display: block;
+  padding-top: 30px;
   width: 50px;
-  height: 50px;
+  height: 74px;
+  font-size: 150%;
 }
 
-#flatChessboard tr td.blackSquares { background-color: #534E49; }
+#flatChessboard tr {
+  td.blackSquares {background-color: #534E49;} 
+  td.whiteSquares {background-color: #ffffff;}
+  td.selected { 
+    border-style: solid;
+    border-color: green;
+    border-width: 2px;
+  }
+}
 
 /* #flatChessboard tr td.blackSquares:hover { background-color: #ccccaa; } */
-
-#flatChessboard tr td.whiteSquares { background-color: #ffffff; }
 
 /* #flatChessboard tr td.whiteSquares:hover { background-color: #ddddaa; } */
 
