@@ -18,16 +18,25 @@
   $scope.currently_selected = null
   $scope.selectPiece = (x, y) ->
     p = @chess.get(x+y)
-    #@prev = @currently_selected
-    if p 
+    takes = ''
+    if p and p.color == @currentPlayer()
       $scope.currently_selected = x+y
     else
       selected = @chess.get($scope.currently_selected)
       letter =  if selected.type isnt 'p' then selected.type.toUpperCase() else ''
-      @chess.move(letter+x+y)
-    #@selectedClass(@prev)
+      if p 
+        takes = if p.color != @currentPlayer() then 'x' else ''
+        letter = if selected.type == 'p' then $scope.currently_selected[0] else letter
+      console.log(letter+takes+x+y)
+      @tryMove(letter+takes+x+y)
   $scope.chess = new Chess
   $scope.squares = [0..7]
+  $scope.tryMove = (move) ->
+    if move in @moves()
+      m = @chess.move(move)
+    else
+      m = @chess.move(move+'+')
+    if m then $scope.currently_selected = null
   $scope.getPiece = (x, y) ->
     p = @chess.get(x+y)
     if p then $scope._mapping[p.color][p.type] else ' '
@@ -58,3 +67,14 @@
       sum += @_piece_heurstic(p, weight)
     sum
 
+  $scope.currentTurn = ->
+    fen = @chess.fen()
+    if fen.split(' ')[1] == 'w' then "white's" else "black's"
+
+  $scope.currentPlayer = ->
+    fen = @chess.fen()
+    fen.split(' ')[1]
+
+  $scope.playerClass = ->
+    fen = @chess.fen()
+    pClass = if fen.split(' ')[1] == 'w' then 'white' else 'black'

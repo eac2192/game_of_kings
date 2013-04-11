@@ -1,8 +1,10 @@
 .row#boardController{'ng-controller' => 'BoardsController'}
-  .small-8.columns
+  .small-10.columns
+    .row
+      .h1.player It is {{currentTurn()}} turn
     .row
       #chess2DBox{:style => "width: 512px; height: 512px;"}
-        %table#flatChessboard{:style => "width: 500px; height: 500px; margin-bottom: 6px; margin-top: 6px;"}
+        %table#flatChessboard{:style => "width: 700px; height: 700px; margin-bottom: 6px; margin-top: 6px;"}
           %tbody.board
             %tr
               %td.boardAngle
@@ -17,12 +19,12 @@
               %td.boardAngle
               %th.horizCoords{ 'ng-repeat' => 'z in "abcdefgh"'} {{z}}
               %td.boardAngle
-        %button{'ng-click' => 'play()'} Play Random Move
-        %form{'ng-submit' => 'move(pos)'}
-          %input{:type => 'text', 'ng-model' => 'pos'}
-          %input{type: 'submit'} Submit
+        -#%button{'ng-click' => 'play()'} Play Random Move
+        -#%form{'ng-submit' => 'move(pos)'}
+          -#%input{:type => 'text', 'ng-model' => 'pos'}
+          -#%input{type: 'submit'} Submit
 
-  .small-4.columns
+  .small-2.columns
     .row
       %h3 Heuristic: {{ heuristic() }}
       %ul
