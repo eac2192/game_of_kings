@@ -15,11 +15,22 @@
       k: "♔"
       r: "♖"
 
+  $scope.currently_selected = null
+  $scope.selectPiece = (x, y) ->
+    p = @chess.get(x+y)
+    #@prev = @currently_selected
+    if p then @currently_selected = x+y
+    #@selectedClass(@prev)
   $scope.chess = new Chess
   $scope.squares = [0..7]
   $scope.getPiece = (x, y) ->
     p = @chess.get(x+y)
     if p then $scope._mapping[p.color][p.type] else ' '
+  $scope.selectedClass =  (x, y) ->
+    if @currently_selected == x+y
+      return 'selected'
+    else
+      return 'unselected'
   $scope.colorClass = (i, j) -> if (i + j) % 2 == 0 then 'whiteSquares' else 'blackSquares'
   $scope.move = (pos) -> @chess.move(pos)
   $scope.moves = -> @chess.moves()
