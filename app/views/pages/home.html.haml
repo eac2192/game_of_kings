@@ -17,7 +17,7 @@
               %td.boardAngle
               %th.horizCoords{ 'ng-repeat' => 'z in "abcdefgh"'} {{z}}
               %td.boardAngle
-        %button{'ng-click' => 'play()'} Play Random Move
+        %button{'ng-click' => 'bestMove()'} Play Random Move
         %form{'ng-submit' => 'move(pos)'}
           %input{:type => 'text', 'ng-model' => 'pos'}
           %input{type: 'submit'} Submit
