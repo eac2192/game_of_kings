@@ -57,11 +57,11 @@
 }
 
 #flatChessboard tr {
-  td.blackSquares.unselected {background-color: #534E49;} 
-  td.whiteSquares.unselected {background-color: #ffffff;}
+  td.blackSquares {background-color: #534E49;} 
+  td.whiteSquares {background-color: #ffffff;}
   td.selected { 
     border-style: solid;
-    border-color: red;
+    border-color: green;
     border-width: 2px;
   }
 }
