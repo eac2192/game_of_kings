@@ -1,15 +1,93 @@
-#flatChessboard { /* Table element */
-  /**
-  * margin-top: [DYNAMIC VALUE];
-  * margin-bottom: [DYNAMIC VALUE];
-  */
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-  border: 0;
-  tbody {
-    border: solid;
+.game {
+  position: relative;
+  left: 35px;
+  #flatChessboard {
+    /**
+    * margin-top: [DYNAMIC VALUE];
+    * margin-bottom: [DYNAMIC VALUE];
+    */
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: 0;
+    tbody {
+      border: solid;
+    }
+    tr {
+      td {
+        &.blackSquares, &.whiteSquares {
+          width: 50px;
+          height: 50px;
+          font-size: 22px;
+          line-height: 0px;
+          text-align: center;
+          font-family: Times New Roman;
+          div {
+            width: 25px;
+            margin: 0px;
+            font-size: 230%;
+            cursor: pointer;
+          }
+        }
+        &.blackSquares {background-color: #534E49;} 
+        &.whiteSquares {background-color: #ffffff;}
+        &.selected { 
+          border-style: solid;
+          border-color: green;
+          border-width: 2px;
+        }
+      }
+      th {
+        font-size: 150%;
+        width: 50px;
+        &.horizCoords {
+          height: 50px;
+        }
+        &.vertCoords {
+          display: block;
+          padding-top: 30px;
+          height: 74px;
+        }
+      }
+    }
   }
+}
+
+.info {
+  position: relative;
+  right: 35px;
+  .twoCol {
+    position: relative;
+    left: 20px;
+    li {width: 45%;}
+    .Cright {
+      float: right;
+    }
+    .Cleft {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+  ul.taken {
+    position: relative;
+    left: 20px;
+    &.white {float: right;}
+    &.black {float: left;}
+  }
+}
+
+#flatChessboard tr td.boardAngle /*, #bottomBorder */ { 
+  background-color: #ffffff;
+  height: 6%; 
+  width: 6%;
+}
+
+#flatChessboard tr th, #flatChessboard tr td.boardAngle /*, #rightBorder, #bottomBorder */ {
+  overflow: visible;
+  background-color: #704316;
+  color: #f9ac6d;
+  font-family: Arial;
+  font-size: 100%;
 }
 
 #flatSq91, #flatSq92, #flatSq93, #flatSq94, #flatSq95, #flatSq96, #flatSq97, #flatSq98 {
@@ -26,84 +104,4 @@
 
 #flatSq98, #flatSq88, #flatSq78, #flatSq68, #flatSq58, #flatSq48, #flatSq38, #flatSq28 {
   border-right: solid
-}
-
-
-#flatChessboard tr td.blackSquares, #flatChessboard tr td.whiteSquares {
-  width: 50px;
-  height: 50px;
-  font-size: 22px;
-  line-height: 0px;
-  text-align: center;
-  font-family: Times New Roman;
-}
-
-#flatChessboard tr td.blackSquares div, #flatChessboard tr td.whiteSquares div { 
-  width: 25px;
-  margin: 0px;
-  font-size: 230%;
-  cursor: pointer;
-}
-
-#flatChessboard tr th.horizCoords {
-  width: 50px;
-  height: 50px;
-  font-size: 150%
-}
-
-#flatChessboard tr th.vertCoords {
-  display: block;
-  padding-top: 30px;
-  width: 50px;
-  height: 74px;
-  font-size: 150%;
-}
-
-#flatChessboard tr {
-  td.blackSquares {background-color: #534E49;} 
-  td.whiteSquares {background-color: #ffffff;}
-  td.selected { 
-    border-style: solid;
-    border-color: green;
-    border-width: 2px;
-  }
-}
-
-.twoCol {
-  position: relative;
-  left: 20px;
-  li {width: 45%;}
-  .Cright {
-    float: right;
-  }
-  .Cleft {
-    float: left;
-    margin-left: 10px;
-  }
-}
-
-ul.taken {
-  position: relative;
-  left: 20px;
-  &.white {float: right;}
-  &.black {float: left;}
-}
-
-/* #flatChessboard tr td.blackSquares:hover { background-color: #ccccaa; } */
-
-/* #flatChessboard tr td.whiteSquares:hover { background-color: #ddddaa; } */
-
-#flatChessboard tr td.boardAngle /*, #bottomBorder */ { height: 6%; }
-
-#flatChessboard tr td.boardAngle { background-color: #ffffff;}
-
-#flatChessboard tr td.boardAngle /*, #rightBorder */ {
-  width: 6%;
-}
-#flatChessboard tr th, #flatChessboard tr td.boardAngle /*, #rightBorder, #bottomBorder */ {
-  overflow: visible;
-  background-color: #704316;
-  color: #f9ac6d;
-  font-family: Arial;
-  font-size: 100%;
 }
