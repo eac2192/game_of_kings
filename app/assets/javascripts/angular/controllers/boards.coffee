@@ -15,7 +15,14 @@
       k: "♔"
       r: "♖"
 
+  $scope.blackTaken = []
+  $scope.whiteTaken = []
   $scope.currently_selected = null
+  $scope.addToTaken = (x, y, color) ->
+    if color == 'b'
+      $scope.whiteTaken.push(@getPiece(x, y))
+    else
+      $scope.blackTaken.push(@getPiece(x, y)) 
   $scope.selectPiece = (x, y) ->
     p = @chess.get(x+y)
     takes = ''
@@ -28,23 +35,25 @@
         takes = if p.color != @currentPlayer() then 'x' else ''
         letter = if selected.type == 'p' then $scope.currently_selected[0] else letter
       console.log(letter+takes+x+y)
-      @tryMove(letter+takes+x+y)
+      if takes != '' then @addToTaken(x, y, @currentPlayer())
+      console.log($scope.whiteTaken)
+      @move(letter+takes+x+y)
   $scope.chess = new Chess
   $scope.squares = [0..7]
-  $scope.tryMove = (move) ->
-    if move in @moves()
-      m = @chess.move(move)
-    else
-      m = @chess.move(move+'+')
-    if m then $scope.currently_selected = null
   $scope.getPiece = (x, y) ->
     p = @chess.get(x+y)
     if p then $scope._mapping[p.color][p.type] else ' '
   $scope.selectedClass =  (x, y) ->
     if $scope.currently_selected == (x+y) then 'selected' else 'unselected'
   $scope.colorClass = (i, j) -> 
-    if (i + j) % 2 == 0 then 'whiteSquares' else 'blackSquares'
-  $scope.move = (pos) -> @chess.move(pos)
+    if (i + j) % 2 == 0 then 'blackSquares' else 'whiteSquares'
+  $scope.move = (move) -> 
+    if move in @moves()
+      m = @chess.move(move)
+    else
+      m = @chess.move(move+'+')
+      if m then alert('Check!')
+    if m then $scope.currently_selected = null
   $scope.moves = -> @chess.moves()
   $scope.play = ->
     unless @chess.game_over()
@@ -66,15 +75,15 @@
     for p, weight of pieces
       sum += @_piece_heurstic(p, weight)
     sum
-
   $scope.currentTurn = ->
     fen = @chess.fen()
     if fen.split(' ')[1] == 'w' then "white's" else "black's"
-
   $scope.currentPlayer = ->
     fen = @chess.fen()
     fen.split(' ')[1]
-
   $scope.playerClass = ->
     fen = @chess.fen()
     pClass = if fen.split(' ')[1] == 'w' then 'white' else 'black'
+  $scope.twoColumns = (i) ->
+    if i % 2 == 0 then 'Cright' else 'Cleft'
+

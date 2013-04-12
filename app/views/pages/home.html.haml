@@ -27,9 +27,22 @@
   .small-2.columns
     .row
       %h3 Heuristic: {{ heuristic() }}
-      %ul
-        %li{'ng-repeat' => 'move in moves()'} {{move}}
-
+    .row
+      .small-12.columns
+        .h1 Available moves
+        %hr
+        %ul.twoCol
+          %li{'ng-repeat' => 'move in moves()', 'class' => "{{twoColumns($index)}}"} {{move}}
+        %hr
+    .row
+      .small-12.columns
+        .h1 Taken Pieces
+        %ul.whiteTaken
+          %li{'ng-repeat' => 'piece in whiteTaken'} {{piece}}
+        %ul.blackTaken
+          %li{'ng-repeat' => 'piece in blackTaken'} {{piece}}
+    .row
+      %hr
       %a{href: 'https://github.com/jhlywa/chess.js'} Chess JS
       %a{href: 'https://github.com/juliangarnier/3D-Hartwig-chess-set'} 3D Chess
 
