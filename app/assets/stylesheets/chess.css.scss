@@ -82,6 +82,12 @@
   }
 }
 
+ul.taken {
+  position: relative;
+  left: 20px;
+  &.white {float: right;}
+  &.black {float: left;}
+}
 
 /* #flatChessboard tr td.blackSquares:hover { background-color: #ccccaa; } */
 
