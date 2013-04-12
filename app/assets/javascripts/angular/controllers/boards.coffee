@@ -66,29 +66,40 @@
     fen = @chess.fen()
     pClass = if fen.split(' ')[1] == 'w' then 'white' else 'black'
   $scope.bestMove = ->
-    @negamax(new Node(@chess.fen()), 2, -99999, 99999, 1)
-  $scope.negamax = (node, depth, alpha, beta, color) ->
-    console.log '.'
+    @alpha_beta(new Node(@chess.fen()), 4, -99999, 99999, 1)
+  $scope.alpha_beta = (node, depth, alpha, beta, color) ->
     children = node.children()
     if depth == 0 or children.length == 0
-      return color * node.heuristic()
+      return node.heuristic()
     best = 0
-    for child, i in children
-      val = $scope.negamax(child, depth - 1, -1*beta, -1*alpha, -1*color)
-      if val >= beta
-        if depth == 2
-          $scope.chess.move $scope.chess.moves()[i]
-        return val
-      if val > alpha
-        best = i
-        alpha = val
-    if depth == 2
-      $scope.chess.move $scope.chess.moves()[best]
-    return alpha
+
+    if color == 1
+      for child, i in children
+        score = @alpha_beta(child, depth - 1, alpha, beta, -1*color)
+        if alpha < score
+          alpha = score
+          if depth == 4
+            best = i
+        if beta <= alpha
+          break
+      console.log(depth) if depth == 4
+      if depth == 4
+        @chess.move @chess.moves()[best]
+      return alpha
+    else
+      for child, i in children
+        score = @alpha_beta(child, depth - 1, alpha, beta, -1*color)
+        console.log depth
+        if beta > score
+          beta = score
+        if beta <= alpha
+          break
+      return beta
 
 class @Node
   constructor: (fen) ->
     @fen = fen
+    @squares = @fen_to_a()
     @chess = new Chess(fen)
   children: ->
     moves = @chess.moves()
@@ -102,6 +113,22 @@ class @Node
     num_black = @_num_pieces(piece)
     num_white = @_num_pieces(piece.toUpperCase())
     (num_black - num_white) * weight
+  fen_to_a: ->
+    str = @fen.split(' ')[0]
+    rows = str.split('/')
+    new_rows = []
+    for row, i in rows
+      new_row = []
+      for c, j in row
+        num = Number(c)
+        if isNaN(num)
+          new_row.push(c)
+        else
+          spaces = (' ' for [1..num])
+          new_row = new_row.concat(spaces)
+      new_rows.push(new_row)
+    new_rows
+
   heuristic: ->
     pieces = { p: 1, r: 5, n: 3, q: 9, b: 3, k: 99999 }
     sum = 0
