@@ -15,7 +15,14 @@
       k: "♔"
       r: "♖"
 
+  $scope.blackTaken = {}
+  $scope.whiteTaken = {}
   $scope.currently_selected = null
+  $scope.addToTaken = (x, y, color) ->
+    if color == 'b'
+      $scope.whiteTaken[@getPiece(x, y)] = if $scope.whiteTaken[@getPiece(x, y)] then $scope.whiteTaken[@getPiece(x, y)]+1 else 1
+    else
+      $scope.blackTaken[@getPiece(x, y)] = if $scope.blackTaken[@getPiece(x, y)] then $scope.blackTaken[@getPiece(x, y)]+1 else 1
   $scope.selectPiece = (x, y) ->
     p = @chess.get(x+y)
     takes = ''
@@ -28,26 +35,28 @@
         takes = if p.color != @currentPlayer() then 'x' else ''
         letter = if selected.type == 'p' then $scope.currently_selected[0] else letter
       console.log(letter+takes+x+y)
-      @tryMove(letter+takes+x+y)
+      if takes != '' then @addToTaken(x, y, @currentPlayer())
+      console.log($scope.whiteTaken)
+      @move(letter+takes+x+y)
   $scope.chess = new Chess
   $scope.heuristic = ->
     n = new Node(@chess.fen())
     n.heuristic()
   $scope.squares = [0..7]
-  $scope.tryMove = (move) ->
-    if move in @moves()
-      m = @chess.move(move)
-    else
-      m = @chess.move(move+'+')
-    if m then $scope.currently_selected = null
   $scope.getPiece = (x, y) ->
     p = @chess.get(x+y)
     if p then $scope._mapping[p.color][p.type] else ' '
   $scope.selectedClass =  (x, y) ->
     if $scope.currently_selected == (x+y) then 'selected' else 'unselected'
   $scope.colorClass = (i, j) -> 
-    if (i + j) % 2 == 0 then 'whiteSquares' else 'blackSquares'
-  $scope.move = (pos) -> @chess.move(pos)
+    if (i + j) % 2 == 0 then 'blackSquares' else 'whiteSquares'
+  $scope.move = (move) -> 
+    if move in @moves()
+      m = @chess.move(move)
+    else
+      m = @chess.move(move+'+')
+      if m then alert('Check!')
+    if m then $scope.currently_selected = null
   $scope.moves = -> @chess.moves()
   $scope.play = ->
     unless @chess.game_over()
@@ -56,6 +65,19 @@
       move = moves[Math.floor(Math.random() * moves.length)]
       @chess.move move
       console.log "move: " + move
+  $scope._num_pieces = (piece) ->
+    @chess.fen().split(' ')[0].split(piece).length - 1
+  $scope._piece_heurstic = (piece, weight) ->
+    num_black = @_num_pieces(piece)
+    num_white = @_num_pieces(piece.toUpperCase())
+    (num_black - num_white) * weight
+
+  $scope.heuristic = ->
+    pieces = { p: 1, r: 5, n: 3, q: 9, b: 3, k: 99999 }
+    sum = 0
+    for p, weight of pieces
+      sum += @_piece_heurstic(p, weight)
+    sum
   $scope.currentTurn = ->
     fen = @chess.fen()
     if fen.split(' ')[1] == 'w' then "white's" else "black's"
@@ -65,6 +87,8 @@
   $scope.playerClass = ->
     fen = @chess.fen()
     pClass = if fen.split(' ')[1] == 'w' then 'white' else 'black'
+  $scope.twoColumns = (i) ->
+    if i % 2 == 0 then 'Cright' else 'Cleft'
   $scope.bestMove = ->
     @alpha_beta(new Node(@chess.fen()), 4, -99999, 99999, 1)
   $scope.alpha_beta = (node, depth, alpha, beta, color) ->

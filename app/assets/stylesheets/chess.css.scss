@@ -28,6 +28,7 @@
   border-right: solid
 }
 
+
 #flatChessboard tr td.blackSquares, #flatChessboard tr td.whiteSquares {
   width: 50px;
   height: 50px;
@@ -66,6 +67,26 @@
     border-color: green;
     border-width: 2px;
   }
+}
+
+.twoCol {
+  position: relative;
+  left: 20px;
+  li {width: 45%;}
+  .Cright {
+    float: right;
+  }
+  .Cleft {
+    float: left;
+    margin-left: 10px;
+  }
+}
+
+ul.taken {
+  position: relative;
+  left: 20px;
+  &.white {float: right;}
+  &.black {float: left;}
 }
 
 /* #flatChessboard tr td.blackSquares:hover { background-color: #ccccaa; } */
