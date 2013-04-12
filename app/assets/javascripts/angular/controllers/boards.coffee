@@ -15,14 +15,14 @@
       k: "♔"
       r: "♖"
 
-  $scope.blackTaken = []
-  $scope.whiteTaken = []
+  $scope.blackTaken = {}
+  $scope.whiteTaken = {}
   $scope.currently_selected = null
   $scope.addToTaken = (x, y, color) ->
     if color == 'b'
-      $scope.whiteTaken.push(@getPiece(x, y))
+      $scope.whiteTaken[@getPiece(x, y)] = if $scope.whiteTaken[@getPiece(x, y)] then $scope.whiteTaken[@getPiece(x, y)]+1 else 1
     else
-      $scope.blackTaken.push(@getPiece(x, y)) 
+      $scope.blackTaken[@getPiece(x, y)] = if $scope.blackTaken[@getPiece(x, y)] then $scope.blackTaken[@getPiece(x, y)]+1 else 1
   $scope.selectPiece = (x, y) ->
     p = @chess.get(x+y)
     takes = ''
@@ -109,6 +109,12 @@
     if depth == 2
       $scope.chess.move $scope.chess.moves()[best]
     return alpha
+
+  #helper methods
+  Array::unique = ->
+    output = {}
+    output[@[key]] = @[key] for key in [0...@length]
+    value for key, value of output
 
 class @Node
   constructor: (fen) ->

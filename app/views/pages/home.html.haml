@@ -38,9 +38,9 @@
       .small-12.columns
         .h1 Taken Pieces
         %ul.taken.white
-          %li{'ng-repeat' => 'piece in whiteTaken'} {{piece}}
+          %li{'ng-repeat' => '(key, value) in whiteTaken'} {{key}} x {{value}}
         %ul.taken.black
-          %li{'ng-repeat' => 'piece in blackTaken'} {{piece}}
+          %li{'ng-repeat' => '(key, value) in blackTaken'} {{key}} x {{value}}
     .row
       %hr
       %a{href: 'https://github.com/jhlywa/chess.js'} Chess JS
