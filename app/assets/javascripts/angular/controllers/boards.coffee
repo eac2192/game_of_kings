@@ -110,12 +110,6 @@
       $scope.chess.move $scope.chess.moves()[best]
     return alpha
 
-  #helper methods
-  Array::unique = ->
-    output = {}
-    output[@[key]] = @[key] for key in [0...@length]
-    value for key, value of output
-
 class @Node
   constructor: (fen) ->
     @fen = fen
