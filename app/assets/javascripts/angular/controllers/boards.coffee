@@ -37,7 +37,25 @@
       console.log(letter+takes+x+y)
       if takes != '' then @addToTaken(x, y, @currentPlayer())
       console.log($scope.whiteTaken)
-      @move(letter+takes+x+y)
+      if selected.type == 'k' and ($scope.currently_selected == 'e1' or $scope.currently_selected == 'd8')
+        if x == 'b' 
+          console.log(x)
+          @move('O-O-O') 
+        else if x == 'g'
+          console.log (x)
+          @move('O-O')
+        else
+          @move(letter+takes+x+y)
+      else if selected.type == 'p'
+        if x == $scope.currently_selected[0]
+          @move(letter+takes+x+y)
+        else if takes != ''
+          @move(letter+takes+x+y)
+        else
+          console.log ('invalid')
+      else
+        @move(letter+takes+x+y)
+
   $scope.chess = new Chess
   $scope.heuristic = ->
     n = new Node(@chess.fen())

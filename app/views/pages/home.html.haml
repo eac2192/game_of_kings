@@ -34,15 +34,15 @@
         %ul.twoCol
           %li{'ng-repeat' => 'move in moves()', 'class' => "{{twoColumns($index)}}"} {{move}}
         %hr
-    .row
-      .small-12.columns
+        %br
         .h1 Taken Pieces
+        %hr
         %ul.taken.white
           %li{'ng-repeat' => '(key, value) in whiteTaken'} {{key}} x {{value}}
-        %ul.taken.black
+        %ul.list.taken.black
           %li{'ng-repeat' => '(key, value) in blackTaken'} {{key}} x {{value}}
+        %hr
     .row
-      %hr
       %a{href: 'https://github.com/jhlywa/chess.js'} Chess JS
       %a{href: 'https://github.com/juliangarnier/3D-Hartwig-chess-set'} 3D Chess
 

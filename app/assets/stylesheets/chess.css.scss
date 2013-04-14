@@ -56,10 +56,25 @@
 .info {
   position: relative;
   right: 35px;
+  .h1 {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    color: #6F6F6F;
+    line-height: 0;
+    font-size: 110%
+  }
+  hr {
+    padding-top: 5px;
+    margin-top: 5px;
+  }
   .twoCol {
     position: relative;
     left: 20px;
-    li {width: 45%;}
+    li {
+        width: 45%;
+        position: relative;
+        bottom: 15px;
+      }
     .Cright {
       float: right;
     }
